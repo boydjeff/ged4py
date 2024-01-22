@@ -265,6 +265,21 @@ class Record:
 
         return records
 
+    def birth_year(self):
+        date = self.sub_tag_value("BIRT/DATE")
+        if date:
+            return int(str(date).split()[-1])
+        date = self.sub_tag_value("CHR/DATE")
+        if date:
+            return int(str(date).split()[-1])
+        return -1
+
+    def death_year(self):
+        date = self.sub_tag_value("DEAT/DATE")
+        if date:
+            return int(str(date).split()[-1])
+        return -1
+
     def __repr__(self) -> str:
         return self.__str__()
 
