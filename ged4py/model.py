@@ -268,14 +268,20 @@ class Record:
     def birth_year(self):
         date = self.sub_tag_value("BIRT/DATE")
         if date:
+            # print(f"birth_year() date={date}, type(date)={type(date)} xref_id={self.xref_id}")
             return int(str(date).split()[-1])
         date = self.sub_tag_value("CHR/DATE")
         if date:
+            # print(f"birth_year() date={date}, type(date)={type(date)} xref_id={self.xref_id}")
             return int(str(date).split()[-1])
         return -1
 
     def death_year(self):
         date = self.sub_tag_value("DEAT/DATE")
+        if date:
+            # print(f"death_year() date={date}, type(date)={type(date)} xref_id={self.xref_id}")
+            return int(str(date).split()[-1])
+        date = self.sub_tag_value("BURI/DATE")
         if date:
             return int(str(date).split()[-1])
         return -1
